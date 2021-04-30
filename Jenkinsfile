@@ -1,12 +1,18 @@
 pipeline {
-    agent {
-        dockerfile true
-    } 
+    agent none
     stages {
-        stage('build') {
+        stage('Build') {
+            agent {
+                docker {
+                    image 'python:3-alpine'
+                }
+            }
             steps {
-                sh 'python --version'
+                sh 'python -m py_compile calc.py'
+
+                stash(name: 'compiled-results', includes: '*.py*')
             }
         }
     }
 }
+        
