@@ -9,12 +9,12 @@ pipeline {
         stage('Build') {
            steps {
                git branch: 'main', credentialsId: '58e8e6a2-9dfe-4cf1-b89f-d4332dc6a841', url: 'https://github.com/bagwanwasim01/Simple_Calc.git'
-               bat label: '', script: 'python calc.py'
+               sh 'python calc.py'
            }
         }
         stage('Test') {
             steps {
-                 bat label: '', script: 'python test_calc.py'
+                 sh 'python test_calc.py'
              }
          }
     }
