@@ -1,10 +1,10 @@
-def input_no(x, y):
-    """This function takes inputs"""
+# def input_no(x, y):
+#     """This function takes inputs"""
 
-    if x > 0 or y > 0:
-        raise ValueError("Integers can't be negative")
+#     if x > 0 or y > 0:
+#         raise ValueError("Integers can't be negative")
 
-    return (x, y)
+#     return (x, y)
 
 
 def add(x, y):
