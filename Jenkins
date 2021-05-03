@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Submit Stack') {
             steps {
+                bat 'start cmd.exe /c C:\\Users\\Wasim'
                 bat "aws cloudformation create-stack --stack-name CFN-PY-CALC --template-body file://AWS_SAML.yaml --region 'us-east-1'" 
             }
         }
