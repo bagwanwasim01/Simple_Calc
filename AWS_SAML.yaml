@@ -1,0 +1,32 @@
+Description: 'This template will create a S3 bucket with transfer acceleration enabled ,
+    S3 bucket versioning enabled and a access policy (resource/bucket policy) on this
+    bucket'
+Resources:
+  SampleBucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref S3BucketName
+      PolicyDocument:
+        Statement:
+            Action:
+              - 's3:GetObject'
+            Effect: Allow
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+              - !Ref S3BucketName
+              - /*
+            Principal: '*'
+CreateS3Bucket:
+  Type: AWS::S3::Bucket
+  DeletionPolicy: Retain
+  Properties:
+    AccessControl: PublicRead
+    AccelerateConfiguration:
+      AccelerationStatus: Enabled
+    BucketName: !Ref S3BucketName
+    Tags:
+      - Key: Name
+        Value: !Ref S3BucketName
+    VersioningConfiguration:
+      Status: Enabled

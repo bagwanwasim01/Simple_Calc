@@ -1,0 +1,10 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Submit Stack') {
+            steps {
+                sh "aws cloudformation create-stack --stack-name CFN-PY-CALC --template-body 
+                file://AWS_SAML.yaml --region 'us-east-1'" 
+            }
+        }
+    }
