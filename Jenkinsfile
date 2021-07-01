@@ -12,7 +12,9 @@ pipeline {
             }
             steps {
                 sh 'python -m py_compile sources/calc.py'
-                stash(name: 'compiled-results', includes: 'sources/*.py*')
+                dir("/var/jenkins_home") {
+                    stash(name: 'compiled-results', includes: 'sources/*.py*')
+                }
             }
         }
         stage('Test') {
