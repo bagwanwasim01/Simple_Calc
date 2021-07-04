@@ -25,6 +25,6 @@ Resources:
       AccessControl: PublicRead
       AccelerateConfiguration:
         AccelerationStatus: Enabled
-      BucketName: "S3-Bucket-CICD"
+      BucketName: "s3-bucket-cicd"
       VersioningConfiguration:
         Status: Enabled
