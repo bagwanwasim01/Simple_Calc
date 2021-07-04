@@ -17,16 +17,16 @@ Resources:
               - !Ref S3BucketName
               - /*
             Principal: '*'
-CreateS3Bucket:
-  Type: AWS::S3::Bucket
-  DeletionPolicy: Retain
-  Properties:
-    AccessControl: PublicRead
-    AccelerateConfiguration:
-      AccelerationStatus: Enabled
-    BucketName: !Ref S3BucketName
-    Tags:
-      - Key: Name
-        Value: !Ref S3BucketName
-    VersioningConfiguration:
-      Status: Enabled
+  CreateS3Bucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      AccessControl: PublicRead
+      AccelerateConfiguration:
+        AccelerationStatus: Enabled
+      BucketName: !Ref S3BucketName
+      Tags:
+        - Key: Name
+          Value: !Ref S3BucketName
+      VersioningConfiguration:
+        Status: Enabled

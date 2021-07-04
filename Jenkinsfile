@@ -12,9 +12,7 @@ pipeline {
             }
             steps {
                 sh 'python -m py_compile sources/calc.py'
-                dir("/var/jenkins_home") {
-                    stash(name: 'compiled-results', includes: 'sources/*.py*')
-                }
+                stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
         stage('Test') {
@@ -39,7 +37,7 @@ pipeline {
                 IMAGE = 'cdrx/pyinstaller-linux:python2'
             }
             steps {
-                dir("/var/jenkins_home") {   //path: env.BUILD_ID
+                dir(path: env.BUILD_ID) { 
                     unstash(name: 'compiled-results') 
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F calc.py'" 
                 }
